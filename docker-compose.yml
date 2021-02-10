@@ -1,0 +1,29 @@
+version: '3.3'
+
+services:
+  mongo:
+    image: mongo:3.2.4
+    ports:
+      - 27017:27017
+
+  server:
+    build:
+      context: ./server/.
+      dockerfile: Dockerfile
+    working_dir: /usr/server/src/app
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/usr/server/src/app
+    depends_on:
+      - mongo
+    command: dockerize mvn -f server/ spring-boot:run
+
+  client:
+    build:
+      context: client
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - server
