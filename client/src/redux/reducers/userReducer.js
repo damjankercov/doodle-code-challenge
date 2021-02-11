@@ -11,7 +11,6 @@ const initialState = {
 export default function userReducer(state = initialState, action) {
     switch (action.type) {
         case LOGIN_SUCCESS: {
-            console.log(action)
             return getNewState(state, {
                 username: action.payload
             })
