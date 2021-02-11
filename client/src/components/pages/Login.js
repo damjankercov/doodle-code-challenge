@@ -10,10 +10,6 @@ const style = theme => ({
     root: {
         height: '100vh',
     },
-    formContainer: {
-        height: '50vh',
-        width: '100vw',
-    },
 })
 
 const Login = ({ classes }) => {
