@@ -25,8 +25,8 @@ public class MessageController {
     private MessageRepository messageRepository;
 
     @PostMapping
-    public void newMessage(@RequestBody final MessageModel newMessage) {
-        messageRepository.save(newMessage);
+    public MessageModel newMessage(@RequestBody final MessageModel newMessage) {
+        return messageRepository.save(newMessage);
     }
 
     @GetMapping
